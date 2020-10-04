@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios fin de semana</title>
+    <style>
+        body {
+            background-color: rgb(245, 245, 254);
+        }
+
+        .button {
+            background-color: lightblue;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .container {
+            color: darkblue;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="title"> Empanadas Stephany</h1>
+        <img src="https://i.pinimg.com/originals/e0/67/87/e06787de86ac5a1e6dbbe872d0a3407b.png" alt="">
+
+        <div class="button" id="buyButton">Comprar </div>
+        <div class="button" id="sellButton">Vender</div>
+        <div class="button" id="stockButton">Conocer el stock</div>
+    </div>
+
+
+    <script>
+        /* necesito una aplicacion que me permita controlar el stock del producto que tengo en tienda. Para ello necesito saber cuanto stock total tengo, necesito poder añadir nuevo proudcto cuando me falte stock, la aplicación deberan controlar el stock disponible avidandome de comprar cuando sea menos de 5 productos de que queden */
+
+        /* 1. Necesito un sitio que almacene un stock, numerico, inicial de 125, ese stock es accesible para cualquier parte de mi código  */
+
+        /* 2. Necesito mostrar el stock por pantalla (alert, console o document.write)  */
+
+        /* Necesito algo (function) que me permita aumentar mi stock */
+
+        /* Necesito algo que permita al usuario comprar producto, en la cantidad que el quiera.  */
+
+        /* tengo que controlar que tengo stock, comprobar si puedo servir el producto que me piden */
+
+        /* y seria deseable que cuando me queden menos de 5 producto me avise de comprar más  */
+
+        var stock = 125;
+
+        /*     var action = prompt('¿Quieres comprar, vender o conocer stock?')
+            var numberOfProduct = parseInt(prompt('¿Cuantas unidades de producto?'))
+    
+    
+            switch (action.toLowerCase()) {
+                case 'comprar':
+                    buyProduct(numberOfProduct)
+                    break;
+                case 'vender':
+                    sellProduct(numberOfProduct)
+                    break;
+                case 'conocer stock':
+                    sellProduct(numberOfProduct)
+                    break;
+                default:
+                    alert('solo comprar o vender, MAMÓN')
+                    break;
+            } */
+
+        document.getElementById('buyButton').addEventListener('click', buyProduct)
+
+        document.getElementById('sellButton').addEventListener('click', sellProduct)
+
+        document.getElementById('stockButton').addEventListener('click', knowStock)
+
+
+        function buyProduct() {
+            var numberOfProduct = parseInt(prompt('¿Cuantas unidades de producto?'))
+
+            stock = stock + numberOfProduct;
+            alert(`Compra realizada! tienes ${stock} productos`)
+        }
+
+        function sellProduct(productNumber) {
+            var numberOfProduct = parseInt(prompt('¿Cuantas unidades de producto?'))
+
+            if (numberOfProduct > stock) {
+                alert('no tengo, soy pobre')
+            } else {
+                stock = stock - numberOfProduct;
+                if (stock <= 5) {
+                    alert(`compra!, quedan ${stock} productos, viva el consumismo`)
+                } else {
+                    alert(`Venta realizada! tienes ${stock} productos`)
+                }
+            }
+        }
+
+        function knowStock() {
+            alert(`quedan ${stock} productos`);
+        }
+    </script>
+
+</body>
+
+</html>
